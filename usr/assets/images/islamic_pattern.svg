@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="islamic" patternUnits="userSpaceOnUse" width="50" height="50">
+      <g fill="#cccccc" fill-opacity="0.3">
+        <polygon points="25,5 45,25 25,45 5,25" />
+        <circle cx="25" cy="25" r="10" fill="none" stroke="#cccccc" stroke-width="1" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#islamic)" />
+</svg>
