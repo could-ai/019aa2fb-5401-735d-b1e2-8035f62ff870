@@ -33,17 +33,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'المخطط الإسلامي اليومي',
       debugShowCheckedModeBanner: false,
+      textDirection: TextDirection.rtl,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'ArabicFont',
       ),
       home: const IslamicPlannerHome(),
-      builder: (context, child) {
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: child!,
-        );
-      },
     );
   }
 }
