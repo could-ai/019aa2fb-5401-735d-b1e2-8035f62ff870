@@ -7,11 +7,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'widgets/prayer_times_widget.dart';
-import 'widgets/adhkar_widget.dart';
-import 'widgets/kinship_widget.dart';
-import 'widgets/eisenhower_matrix_widget.dart';
-import 'widgets/settings_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,10 +69,12 @@ class _IslamicPlannerHomeState extends State<IslamicPlannerHome> {
     return Scaffold(
       body: Stack(
         children: [
-          SvgPicture.asset(
-            'assets/images/islamic_pattern.svg',
-            fit: BoxFit.cover,
+          Opacity(
             opacity: 0.1,
+            child: SvgPicture.asset(
+              'assets/images/islamic_pattern.svg',
+              fit: BoxFit.cover,
+            ),
           ),
           _screens[_selectedIndex],
         ],
@@ -162,10 +159,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   Future<void> _fetchPrayerTimes() async {
     try {
       final position = await Geolocator.getCurrentPosition();
-      final response = await http.get(Uri.parse(
-        'https://api.aladhan.com/v1/timings?latitude=
-${position.latitude}&longitude=${position.longitude}&method=2',
-      ));
+      final url = 'https://api.aladhan.com/v1/timings?latitude=${position.latitude}&longitude=${position.longitude}&method=2';
+      final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
